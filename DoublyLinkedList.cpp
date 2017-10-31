@@ -110,3 +110,33 @@ int DoublyLinkedList::remove(int key) {
 	--size;
 	return temp;
 }
+
+int DoublyLinkedList::removeBack(){
+	ListNode *node = back;
+
+	if(back -> prev == NULL){
+		front = NULL;
+	}
+	else { 
+		back -> prev -> next = NULL;
+	}
+	back = back -> prev;
+	node -> prev = NULL;
+	int temp = node -> data;
+	delete node;
+	--size;
+	return temp;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,7 +24,7 @@ DoublyLinkedList::DoublyLinkedList(){
 DoublyLinkedList::~DoublyLinkedList(){
 	ListNode *curr = front;
 	while (curr) {
-		ListNode *next = curr -> next;
+		ListNode* next = curr -> next;
 		delete curr;
 		curr = next;
 	}
@@ -127,6 +127,16 @@ int DoublyLinkedList::removeBack(){
 	--size;
 	return temp;
 
+}
+
+void DoublyLinkedList::printList(){
+	ListNode *curr = front;
+
+	while(curr) {
+		ListNode *next = curr -> next;
+		cout << curr -> data << endl;
+		curr = next;	
+	}
 }
 
 

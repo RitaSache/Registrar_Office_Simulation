@@ -86,7 +86,7 @@ int DoublyLinkedList::remove(int key) {
 	while(curr ->data != key) {
 		curr = curr -> next;
 		if(curr == NULL){
-			return NULL; //if not found, we're done looking
+			return 0; //if not found, we're done looking
 		}
 	}
 	//if value to delete is found, need to check if it's in the front, back or middle

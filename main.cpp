@@ -15,6 +15,8 @@ int main() {
 	r.removeBack();
 	r.insertBack(9);
 	r.printList();
+	r.deletePos(4);
+	r.printList();
 
 	return 0;
 }

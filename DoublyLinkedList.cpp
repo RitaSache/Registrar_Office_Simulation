@@ -8,12 +8,13 @@ ListNode::ListNode(int d){
 }
 
 ListNode::~ListNode(){
+	/*
 	if (next != NULL){
 		delete next;
 	}
 	next = NULL;
 	prev = NULL;
-}
+*/}
 
 DoublyLinkedList::DoublyLinkedList(){
 	size = 0;
@@ -126,7 +127,35 @@ int DoublyLinkedList::removeBack(){
 	delete node;
 	--size;
 	return temp;
+}
 
+int DoublyLinkedList::deletePos(int pos) {
+	int idx = 0;
+	ListNode *curr = front;
+	ListNode *prev = front;
+	ListNode *next = curr -> next;
+	while(idx != pos) {
+		prev = curr; 
+		curr = curr -> next;
+		++idx;
+	}
+	/*if (idx == 0) {
+		curr -> next = NULL;
+		next -> prev = NULL;
+		int d = curr -> data;
+		delete curr;
+		size--;
+		return d;
+	}*/
+
+	prev -> next = curr -> next;
+	curr -> next = NULL;
+	next -> prev = curr -> prev;
+	curr -> prev = NULL;
+	int d = curr -> data;
+	delete curr;
+	size--;
+	return d;
 }
 
 void DoublyLinkedList::printList(){

@@ -1,4 +1,3 @@
-using namespace std;
 
 class ListNode {
 	public:
@@ -8,5 +7,4 @@ class ListNode {
 		//next node
 		ListNode();
 		ListNode(int data);
-		~ListNode();
 };

@@ -1,20 +1,7 @@
-#include "ListNode.h"
+#include "DoublyLinkedList.h"
+#include <iostream>
+
 using namespace std;
-
-ListNode::ListNode(int d){ 
-	data = d; 
-	next = NULL;
-	prev = NULL;
-}
-
-ListNode::~ListNode(){
-	/*
-	if (next != NULL){
-		delete next;
-	}
-	next = NULL;
-	prev = NULL;
-*/}
 
 DoublyLinkedList::DoublyLinkedList(){
 	size = 0;
@@ -168,9 +155,40 @@ void DoublyLinkedList::printList(){
 	}
 }
 
+bool DoublyLinkedList::isEmpty(){
+	if(size == 0) {
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
+unsigned int DoublyLinkedList::getSize(){
+	return size;
+}
 
+int DoublyLinkedList::find(int value){
+	int idx = -1; //keep track of index if the value is found. -1 so that if it's negative that means we did not find anything
+	ListNode *curr = front; //keep track of where you're at
+	while(curr != NULL) { //start searching for a value
+		++idx;
+		if(curr -> data == value) { //means it found the value
+			break;
+		}
+		else {
+			curr = curr -> next; //means if not found, it goes to the next node, then the next, etc.
+		}
+	}
+	if (curr == NULL) {
+			idx = -1;
+	}
+	return idx;
+}
 
+int DoublyLinkedList::showFrontNode(){
+	return front->data;
+}
 
 
 

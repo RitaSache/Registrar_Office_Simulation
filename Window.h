@@ -9,6 +9,7 @@ class Window{
 		int max;
 		Student **windowsArray;
 		Window(int maxNumber);
+		~Window();
 		int firstAvailableWindow();
 };
 

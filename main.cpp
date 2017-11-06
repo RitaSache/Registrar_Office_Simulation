@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	int numberOfWindowsOpen = stoi(line); //converting from string to int
 	Window windows(numberOfWindowsOpen);//where i make my windows array with that size
 	int ID=0;
-	while(true){
+	while(!inputFile.eof()){
 
 		getline(inputFile, line);
 		int timeOfArr = stoi(line);
@@ -35,7 +35,9 @@ int main(int argc, char **argv) {
 			ID++;
 		}
 	}
+	int sizeOfQueue = students.getSize();
 	int *waitTimes = new int[students.getSize()];
+	int *idleWindowTimes = new int[numberOfWindowsOpen];
 	int time = 0;
 	while(time){
 		for(int i = 0; i < windows.max; i++){
@@ -59,19 +61,18 @@ int main(int argc, char **argv) {
 		for(int i = 0; i < windows.max; i++){
 			if(windows.windowsArray[i] != NULL)
 				windows.windowsArray[i] -> timeNeededAtAWindow--;
-		}
-		time++;
-
-
-
-			/*int temp = timeNeededAtAWindow;
-			for(int i = 0; i < temp; i++){
-				timeNeededAtAWindow--;
-				time++;
+			else{
+				idleWindowTimes[i]++;
 			}
 		}
-		else if(timeOfArrival < time){
-
-		}*/
+		time++;
 	}
+	int sum = 0;
+	for(int i=0; i<sizeOfQueue; i++){
+		sum+=waitTimes[i];
+	}
+	int meanWaitingTime = 0;
+	meanWaitingTime = sizeOfQueue/sum;
+	cout << "Mean student waiting time is " << meanWaitingTime << endl;
+
 }

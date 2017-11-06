@@ -8,7 +8,7 @@ Window::Window(int maxNumber){
 	}
 	max = maxNumber;
 }
-
+Window::~Window(){}
 
 int Window::firstAvailableWindow(){
 	for(int i = 0; i < max; i++){

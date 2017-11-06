@@ -4,9 +4,10 @@
 
 class Student{
 	public:
+		int ID;
 		int timeOfArrival;
 		int timeNeededAtAWindow;
-		Student(int timeOfArrival, int timeNeededAtAWindow);
+		Student(int timeOfArrival, int timeNeededAtAWindow, int ID);
 		~Student();
 };
 

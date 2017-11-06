@@ -5,9 +5,8 @@
 #include "Student.h"
 
 class Window{
-	private:
-		int max;
 	public:
+		int max;
 		Student **windowsArray;
 		Window(int maxNumber);
 		int firstAvailableWindow();

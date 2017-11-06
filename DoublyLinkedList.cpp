@@ -18,7 +18,7 @@ DoublyLinkedList::~DoublyLinkedList(){
 	}
 }
 
-void DoublyLinkedList::insertFront(int d){
+void DoublyLinkedList::insertFront(Student *d){
 	ListNode *node = new ListNode(d);
 
 	if (size == 0) {
@@ -32,7 +32,7 @@ void DoublyLinkedList::insertFront(int d){
 	front = node;
 	size++;
 }
-void DoublyLinkedList::insertBack(int d){
+void DoublyLinkedList::insertBack(Student *d){
 	ListNode *node = new ListNode(d);
 
 	if (size == 0) {
@@ -46,7 +46,7 @@ void DoublyLinkedList::insertBack(int d){
 	++size;
 }
 
-int DoublyLinkedList::removeFront(){ //to remove, check if it's the only node in the list or there's more
+Student* DoublyLinkedList::removeFront(){ //to remove, check if it's the only node in the list or there's more
 	//nodes are pointing in both directions: |-|_|_|_| -> |_|_|_| -> |_|_|_| -|
 										  // =	 	   <-         <-          =
  	ListNode *node = front;
@@ -61,45 +61,13 @@ int DoublyLinkedList::removeFront(){ //to remove, check if it's the only node in
 	front = front -> next;
 	//then remove pointer of the front node that used to point to the next in line node
 	node -> next = NULL; 
-	int temp = node -> data;
+	Student *temp = node -> data;//temp used to be an int
 	delete node;
 	--size;
 	return temp;
 }
 
-int DoublyLinkedList::remove(int key) {
-	ListNode *curr = front; //curr in pointing to front and needed to keep track of where i am at in the linkedlist
-	//start looking for node
-	while(curr ->data != key) {
-		curr = curr -> next;
-		if(curr == NULL){
-			return 0; //if not found, we're done looking
-		}
-	}
-	//if value to delete is found, need to check if it's in the front, back or middle
-	if(curr == front) {
-		front = curr -> next;
-	}
-	else {//node is in the middle somewhere and we need to update pointers
-		curr->prev -> next = curr ->next;//previous node's to current node pointer gets pointed to the node right after the current node instead
-	}
-
-	if(curr == back) {
-		back = curr->prev;
-	}
-	else {
-		curr->next->prev = curr -> prev;
-	}
-	curr->next = NULL;//nulling out the current node
-	curr->prev = NULL;
-
-	int temp = curr->data;
-	delete curr; //deleting the node
-	--size;
-	return temp;
-}
-
-int DoublyLinkedList::removeBack(){
+Student* DoublyLinkedList::removeBack(){
 	ListNode *node = back;
 
 	if(back -> prev == NULL){
@@ -110,13 +78,13 @@ int DoublyLinkedList::removeBack(){
 	}
 	back = back -> prev;
 	node -> prev = NULL;
-	int temp = node -> data;
+	Student *temp = node -> data;
 	delete node;
 	--size;
 	return temp;
 }
 
-int DoublyLinkedList::deletePos(int pos) {
+Student* DoublyLinkedList::deletePos(int pos) {
 	int idx = 0;
 	ListNode *curr = front;
 	ListNode *prev = front;
@@ -139,7 +107,7 @@ int DoublyLinkedList::deletePos(int pos) {
 	curr -> next = NULL;
 	next -> prev = curr -> prev;
 	curr -> prev = NULL;
-	int d = curr -> data;
+	Student *d = curr -> data;
 	delete curr;
 	size--;
 	return d;
@@ -150,7 +118,7 @@ void DoublyLinkedList::printList(){
 
 	while(curr) {
 		ListNode *next = curr -> next;
-		cout << curr -> data << endl;
+		cout << curr -> data -> timeOfArrival << ',' << curr -> data ->timeNeededAtAWindow  << endl;
 		curr = next;	
 	}
 }
@@ -168,25 +136,7 @@ unsigned int DoublyLinkedList::getSize(){
 	return size;
 }
 
-int DoublyLinkedList::find(int value){
-	int idx = -1; //keep track of index if the value is found. -1 so that if it's negative that means we did not find anything
-	ListNode *curr = front; //keep track of where you're at
-	while(curr != NULL) { //start searching for a value
-		++idx;
-		if(curr -> data == value) { //means it found the value
-			break;
-		}
-		else {
-			curr = curr -> next; //means if not found, it goes to the next node, then the next, etc.
-		}
-	}
-	if (curr == NULL) {
-			idx = -1;
-	}
-	return idx;
-}
-
-int DoublyLinkedList::showFrontNode(){
+Student* DoublyLinkedList::showFrontNode(){
 	return front->data;
 }
 

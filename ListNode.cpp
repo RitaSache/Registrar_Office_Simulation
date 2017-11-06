@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ListNode.h"
 
-ListNode::ListNode(int d){ 
+ListNode::ListNode(Student *d){ 
 	data = d; 
 	next = NULL;
 	prev = NULL;

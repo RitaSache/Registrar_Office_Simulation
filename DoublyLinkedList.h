@@ -1,4 +1,9 @@
+#ifndef DoublyLinkedList_Included
+
+#define DoublyLinkedList_Included
+
 #include "ListNode.h"
+
 
 class DoublyLinkedList {
 	private:
@@ -8,16 +13,15 @@ class DoublyLinkedList {
 	public: 
 		DoublyLinkedList();
 		~DoublyLinkedList();
-		void insertFront(int data);
-		void insertBack(int data);
-		int removeFront();
-		int removeBack();
-		int remove(int key);
+		void insertFront(Student *data);
+		void insertBack(Student *data);
+		Student* removeFront();
+		Student* removeBack();
 		void printList();
-		int deletePos(int pos);
-		int find(int value);
-		bool insertAfter(int pos, int val);
+		Student* deletePos(int pos);
 		bool isEmpty();
 		unsigned int getSize();
-		int showFrontNode();
+		Student* showFrontNode();
 };
+
+#endif

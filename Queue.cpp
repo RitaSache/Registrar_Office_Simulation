@@ -9,15 +9,15 @@ genQueue::~genQueue(){
 	delete myList;
 }
 
-void genQueue::insert(int data) {
+void genQueue::insert(Student *data) {
 	myList->insertBack(data);
 }
 
-int genQueue::remove(int key){ 
-	return myList->remove(key);
+Student* genQueue::remove(){ 
+	return myList->removeFront();
 }
 
-int genQueue::peek(){
+Student* genQueue::peek(){
 	return myList->showFrontNode();
 }
 

@@ -7,9 +7,9 @@ class Student{
 		int ID;
 		int timeOfArrival;
 		int timeNeededAtAWindow;
-		Student(int timeOfArrival, int timeNeededAtAWindow, int ID);
+		Student(int timeOfArr, int timeNeeded, int id);
 		~Student();
-};
+	};
 
 
 #endif
